@@ -1,20 +1,46 @@
 class Cell{
-    //blueprint for all cells since there are so many 
+    constructor(row,col) {
+        this.row = row;
+        this.col = col;
+        this.isWall = false;
+        this.isVisited = false;
+        this.isStart = true;
+        this.isGoal = false;
+        this.previous = this.previous; //fix this
+    }
 }
 
 class Grid {
-    //shows the array of cells
-    // functions like createGrid() & getNeighbors()
+    constructor(rows,cols) {
+        this.row = rows;
+        this.cols = cols;
+        grid = []
+    }
+
+    createGrid(){
+        //creates grid
+    }
+
+    getNeighbors(){
+        //gets nearby neighbors 
+    }
 
 }
 
 class Pathfinder {
-    //handles the algorithms
-    // functions like 
+    bfs(start,goal) {
+        // for loop goes here
+
+        if //neighbor !isWall && neighbor 
+        neighbor.isVisited = true;
+        neighbor.previous = current;
+        queue.push(neighbor);
+        if (current === goal) {
+            // then build path by working backwards 
+        }
+    }
 }
 
 class UiController {
-    //focuses on the User Interface
-    // functions like resetGrid(), handClick() -> what to do if user clicks button
-    // and startAlgorithm() ->kickstarts the algorithm and all its features
+
 }
