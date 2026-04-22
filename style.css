@@ -1,0 +1,40 @@
+body {
+  font-family: Arial;
+  text-align: center;
+}
+
+#controls {
+  margin-bottom: 15px;
+}
+
+#grid {
+  display: grid;
+  justify-content: center;
+}
+
+.cell {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.wall {
+  background-color: black;
+}
+
+.start {
+  background-color: green;
+}
+
+.goal {
+  background-color: red;
+}
+
+.visited {
+  background-color: lightblue;
+}
+
+.path {
+  background-color: lightgreen;
+}
