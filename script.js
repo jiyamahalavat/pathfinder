@@ -1,8 +1,8 @@
-let grid;
+let grid; //declare variables 
 let startCell;
 let goalCell;
 
-class Cell {
+class Cell { //only for one cell
   constructor(row, col) {
     this.row = row;
     this.col = col;
@@ -20,7 +20,7 @@ class Cell {
       ui.handleClick(this);
     });
   }
-
+  // updates the appearance of the cell
   draw() {
     this.element.className = "cell";
 
@@ -30,7 +30,7 @@ class Cell {
   }
 }
 
-class Grid {
+class Grid { //manages the full grid
   constructor(rows, cols) {
     this.rows = rows;
     this.cols = cols;
@@ -41,8 +41,8 @@ class Grid {
     const grid = document.getElementById("grid");
 
     grid.innerHTML = "";
-    grid.style.gridTemplateColumns = `repeat(${this.cols}, 25px)`;
-    grid.style.gridTemplateRows = `repeat(${this.rows}, 25px)`;
+    grid.style.gridTemplateColumns = `repeat(${this.cols}, 25px)` //this is css
+    grid.style.gridTemplateRows = `repeat(${this.rows}, 25px)`; //this is also css
 
     for (let r = 0; r < this.rows; r++) {
       let rowArr = [];
@@ -58,7 +58,7 @@ class Grid {
   }
 
   getNeighbors(cell) {
-    let dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+    let dirs = [[1,0],[-1,0],[0,1],[0,-1]]; //up, down, left, right
     let neighbors = [];
 
     for (let d of dirs) {
@@ -80,11 +80,11 @@ class Pathfinder {
   }
 
   bfs(start, goal) {
-    for (let row of this.grid.cells) {
+    for (let row of this.grid.cells) { // resets all the cells before running so it can perform the search
       for (let cell of row) {
         cell.isVisited = false;
         cell.previous = null;
-        cell.element.classList.remove("visited", "path");
+        cell.element.classList.remove("visited", "path"); //removes old visuals so it can reset the grid completely
       }
     }
 
@@ -94,12 +94,12 @@ class Pathfinder {
 
     while (queue.length > 0) {
       let current = queue.shift();
-
+      // if we reached goal → stop
       if (current === goal) {
         this.reconstructPath(goal);
         return;
       }
-
+      // check all neighbors
       for (let neighbor of this.grid.getNeighbors(current)) {
         if (!neighbor.isVisited && !neighbor.isWall) {
           neighbor.isVisited = true;
@@ -112,7 +112,7 @@ class Pathfinder {
       }
     }
   }
-
+  // builds the shortest path backwards
   reconstructPath(goal) {
     let current = goal;
 
@@ -128,7 +128,7 @@ class Pathfinder {
 
 class UIController {
   constructor() {
-    this.mode = "wall";
+    this.mode = "wall"; //default mode 
   }
 
   init() {
@@ -161,7 +161,7 @@ class UIController {
       return;
     }
 
-    if (this.mode === "goal") {
+    if (this.mode === "goal") { // if this is the goal then just trace backwards 
       if (cell.isWall) return;
 
       goalCell.isGoal = false;
@@ -187,11 +187,11 @@ class UIController {
     this.pathfinder.bfs(startCell, goalCell);
   }
 
-  resetGrid() {
+  resetGrid() { //this resets grid 
     location.reload();
   }
 
-  createNewGrid() {
+  createNewGrid() { //creates new grid based on user selection 
     let rows = parseInt(document.getElementById("rowsInput").value);
     let cols = parseInt(document.getElementById("colsInput").value);
 
@@ -200,8 +200,8 @@ class UIController {
     grid = new Grid(rows, cols);
     grid.createGrid();
 
-    startCell = grid.cells[0][0];
-    goalCell = grid.cells[rows - 1][cols - 1];
+    startCell = grid.cells[0][0]; //resets start
+    goalCell = grid.cells[rows - 1][cols - 1]; //resets goal 
 
     startCell.isStart = true;
     goalCell.isGoal = true;
@@ -214,6 +214,6 @@ class UIController {
 }
 
 const ui = new UIController();
-ui.init();
+ui.init(); //starts the program 
 
 
