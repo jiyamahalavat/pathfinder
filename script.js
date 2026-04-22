@@ -38,18 +38,18 @@ class Grid {
   }
 
   createGrid() {
-    const gridEl = document.getElementById("grid");
+    const grid = document.getElementById("grid");
 
-    gridEl.innerHTML = "";
-    gridEl.style.gridTemplateColumns = `repeat(${this.cols}, 25px)`;
-    gridEl.style.gridTemplateRows = `repeat(${this.rows}, 25px)`;
+    grid.innerHTML = "";
+    grid.style.gridTemplateColumns = `repeat(${this.cols}, 25px)`;
+    grid.style.gridTemplateRows = `repeat(${this.rows}, 25px)`;
 
     for (let r = 0; r < this.rows; r++) {
       let rowArr = [];
 
       for (let c = 0; c < this.cols; c++) {
         let cell = new Cell(r, c);
-        gridEl.appendChild(cell.element);
+        grid.appendChild(cell.element);
         rowArr.push(cell);
       }
 
