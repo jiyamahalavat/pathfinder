@@ -2,38 +2,29 @@
 <html>
 <head>
   <title>Pathfinding Visualizer</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <h2>Pathfinding Visualizer (BFS)</h2>
-
 <div id="controls">
 
   <button onclick="ui.startAlgorithm()">Start</button>
   <button onclick="ui.resetGrid()">Reset</button>
-
   <br><br>
-
   <button onclick="ui.setMode('start')">Set Start</button>
   <button onclick="ui.setMode('goal')">Set Goal</button>
   <button onclick="ui.setMode('wall')">Wall Mode</button>
-
   <br><br>
-
   Rows:
   <input id="rowsInput" type="number" value="20">
-
   Cols:
   <input id="colsInput" type="number" value="20">
-
   <button onclick="ui.createNewGrid()">Create Grid</button>
-
+  <input id="bfs" type="radio"> BFS
 </div>
 
 <div id="grid"></div>
-
 <script src="script.js"></script>
 </body>
 </html>
